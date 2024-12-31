@@ -75,6 +75,83 @@
     }
     .emoji {
       font-size: 3rem;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year 2025</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      background: #0a0a23;
+      color: white;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ffcb00;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7), 0 0 20px rgba(255, 203, 0, 0.7), 0 0 30px rgba(255, 203, 0, 0.8);
+    }
+    .input-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .input-box input {
+      padding: 15px;
+      font-size: 1.5rem;
+      border: 2px solid #ff575a;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 400px;
+      margin-bottom: 15px;
+      text-align: center;
+      background-color: #1e1e2f;
+      color: #fff;
+      box-shadow: 0 0 8px rgba(255, 87, 90, 0.6);
+    }
+    .input-box input:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(255, 87, 90, 0.8);
+    }
+    .input-box button {
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      color: white;
+      background: #ff575a;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+    .input-box button:hover {
+      background: #ff758c;
+    }
+    .message {
+      font-size: 2rem;
+      display: none;
+      margin-top: 20px;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7), 0 0 20px rgba(255, 203, 0, 0.7);
+      line-height: 1.5;
+    }
+    .emoji {
+      font-size: 3rem;
       margin-top: 20px;
       text-shadow: 0 0 10px rgba(255, 203, 0, 0.7);
     }
@@ -167,6 +244,7 @@
   
   
   <div id="clockContainer" style="
+  width: 80%;
   position: fixed;
   top: 50px;
   left: 50%;
@@ -239,6 +317,11 @@
     </div>
   </div>
   
+
+</body>
+
+
+
 <script>
   let poppedBalloons = 0;
   const balloonColors = ['#ff7eb3', '#ff758c', '#ff575a', '#ffd700', '#ffa500'];
@@ -313,7 +396,11 @@
   // Load the score when the page loads
   document.addEventListener('DOMContentLoaded', loadScore);
 </script>
-</body>
+
+
+
+
+
 
 <script>
   function updateClockAndDate() {
