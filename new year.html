@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year 2025</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      background: #0a0a23;
+      color: white;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+    .title {
+      font-size: 3rem;
+      font-weight: bold;
+      margin-bottom: 10px;
+      color: #ffcb00;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7), 0 0 20px rgba(255, 203, 0, 0.7), 0 0 30px rgba(255, 203, 0, 0.8);
+    }
+    .input-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .input-box input {
+      padding: 15px;
+      font-size: 1.5rem;
+      border: 2px solid #ff575a;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 400px;
+      margin-bottom: 15px;
+      text-align: center;
+      background-color: #1e1e2f;
+      color: #fff;
+      box-shadow: 0 0 8px rgba(255, 87, 90, 0.6);
+    }
+    .input-box input:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(255, 87, 90, 0.8);
+    }
+    .input-box button {
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      color: white;
+      background: #ff575a;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+    .input-box button:hover {
+      background: #ff758c;
+    }
+    .message {
+      font-size: 2rem;
+      display: none;
+      margin-top: 20px;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7), 0 0 20px rgba(255, 203, 0, 0.7);
+      line-height: 1.5;
+    }
+    .emoji {
+      font-size: 3rem;
+      margin-top: 20px;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7);
+    }
+    .balloons-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      background: linear-gradient(to bottom, #ff7eb3, #ff758c);
+      border-radius: 50%;
+      animation: float 7s infinite ease-in;
+      cursor: pointer;
+    }
+    .balloon::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: white;
+      transform: translateX(-50%);
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+    .balloon.pop {
+      animation: pop 0.5s forwards;
+    }
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ffcb00;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+    .counter {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #ffcb00;
+      z-index: 100;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7);
+    }
+  </style>
+</head>
+<body>
+  
+  
+  <div id="clockContainer" style="
+  position: fixed;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: 'Courier New', monospace;
+  color: #00ffcc;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
+  text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ff99, 0 0 40px #00ff99;
+  animation: pulse 1s infinite alternate;
+">
+  <div id="currentDate" style="font-size: 1.5rem; margin-bottom: 10px;"></div>
+  <div id="currentTime" style="font-size: 3rem;"></div>
+  <div id="countdown" style="font-size: 1.2rem; margin-top: 10px; color: #ffd700;"></div>
+</div>
+  
+  
+  
+  
+  <a href="https://smartkyp.blogspot.com/?m=1#" style="text-decoration: none;">
+  <button style="
+      position: fixed; /* Make it fixed for consistent placement */
+      bottom: 20px; /* Adjust position as per your layout */
+      right: 20px; /* Position on the screen */
+      background-color: #4CAF50; 
+      border: none; 
+      color: white; 
+      padding: 15px 30px; 
+      text-align: center; 
+      font-size: 16px; 
+      border-radius: 5px; 
+      box-shadow: 0px 4px #2e7d32; 
+      cursor: pointer; 
+      transition: transform 0.2s ease-in-out;
+      z-index: 999999999; /* Highest priority */
+  " 
+  onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0px 6px #2e7d32';" 
+  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0px 4px #2e7d32';">
+    Visit Our Official Website
+  </button>
+</a>
+  
+  
+  
+ 
+ 
+ 
+ 
+  <!-- Counter Display -->
+  <div class="counter" id="balloonCounter">score🏹: 0</div>
+
+  <!-- Animated Balloons -->
+  <div class="balloons-container" id="balloonsContainer"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="title" id="enterText">Enter Your Name</div>
+    <div class="input-box">
+      <input type="text" id="username" placeholder="Type your name here" />
+      <button onclick="startAnimation()">Start</button>
+    </div>
+    <div class="message" id="welcomeMessage">
+      <div id="happyNewYear">Happy New Year 2025</div>
+      <div id="welcomeText">Welcome to Smart Kyp</div>
+      <div id="userNameText"></div>
+      <div class="emoji" id="emojiBox">🎇🥳🎉</div>
+    </div>
+  </div>
+  
+<script>
+  let poppedBalloons = 0;
+  const balloonColors = ['#ff7eb3', '#ff758c', '#ff575a', '#ffd700', '#ffa500'];
+  const balloonsContainer = document.getElementById('balloonsContainer');
+  const balloonCounter = document.getElementById('balloonCounter');
+
+  // Load score from local storage if available
+  function loadScore() {
+    const storedScore = localStorage.getItem('balloonScore');
+    poppedBalloons = storedScore ? parseInt(storedScore) : 0;
+    balloonCounter.textContent = `Score🏹: ${poppedBalloons}`;
+  }
+
+  // Save score to local storage
+  function saveScore() {
+    localStorage.setItem('balloonScore', poppedBalloons);
+  }
+
+  // Create confetti
+  function createConfetti() {
+    for (let i = 0; i < 100; i++) {
+      const confetti = document.createElement('div');
+      confetti.className = 'confetti';
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+      confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+      confetti.style.animationDelay = Math.random() * 2 + 's';
+      document.body.appendChild(confetti);
+      setTimeout(() => confetti.remove(), 5000);
+    }
+  }
+
+  // Create and animate balloons
+  function createBalloon() {
+    const balloon = document.createElement('div');
+    balloon.className = 'balloon';
+    balloon.style.left = Math.random() * 100 + 'vw';
+    balloon.style.background = `linear-gradient(to bottom, ${
+      balloonColors[Math.floor(Math.random() * balloonColors.length)]
+    }, white)`;
+
+    balloon.addEventListener('click', () => {
+      poppedBalloons++;
+      balloonCounter.textContent = `Score🏹: ${poppedBalloons}`;
+      saveScore(); // Save updated score
+      balloon.classList.add('pop');
+      setTimeout(() => balloon.remove(), 500);
+      createConfetti();
+    });
+
+    balloonsContainer.appendChild(balloon);
+    setTimeout(() => balloon.remove(), 7000);
+  }
+
+  setInterval(createBalloon, 500);
+
+  // Start animation after entering name
+  function startAnimation() {
+    const name = document.getElementById('username').value;
+    if (name) {
+      document.getElementById('enterText').style.display = 'none';
+      document.querySelector('.input-box').style.display = 'none';
+      const messageBox = document.getElementById('welcomeMessage');
+      const userNameText = document.getElementById('userNameText');
+      userNameText.innerHTML = `Hi, ${name}`;
+      messageBox.style.display = 'block';
+    } else {
+      alert('Please enter your name.');
+    }
+  }
+
+  // Load the score when the page loads
+  document.addEventListener('DOMContentLoaded', loadScore);
+</script>
+</body>
+
+<script>
+  function updateClockAndDate() {
+    const now = new Date();
+    const hours = String(now.getHours()).padStart(2, '0');
+    const minutes = String(now.getMinutes()).padStart(2, '0');
+    const seconds = String(now.getSeconds()).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const year = now.getFullYear();
+
+    // Display current date and time
+    document.getElementById('currentDate').textContent = `Date: ${day}/${month}/${year}`;
+    document.getElementById('currentTime').textContent = `${hours} : ${minutes} : ${seconds}`;
+  }
+
+  function updateCountdown() {
+    const now = new Date();
+    const newYear = new Date('January 1, 2025 00:00:00');
+    const diff = newYear - now;
+
+    if (diff <= 0) {
+      document.getElementById('countdown').textContent = '🎉 Happy New Year 2025! 🎉';
+      clearInterval(countdownInterval);
+      return;
+    }
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById('countdown').textContent = 
+      `Countdown to 2025: ${days}d ${hours}h ${minutes}m ${seconds}s`;
+  }
+
+  // Start the clock and countdown
+  updateClockAndDate();
+  updateCountdown();
+  setInterval(updateClockAndDate, 1000);
+  const countdownInterval = setInterval(updateCountdown, 1000);
+</script>
+</html>
