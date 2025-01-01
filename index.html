@@ -21,15 +21,6 @@
       text-align: center;
       z-index: 1;
     }
-    .title {
-      font-size: 3rem;
-      font-weight: bold;
-      margin-bottom: 10px;
-      color: #ffcb00;
-      text-transform: uppercase;
-      letter-spacing: 2px;
-      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7), 0 0 20px rgba(255, 203, 0, 0.7), 0 0 30px rgba(255, 203, 0, 0.8);
-    }
     .input-box {
       display: flex;
       flex-direction: column;
@@ -161,64 +152,74 @@
       z-index: 100;
       text-shadow: 0 0 10px rgba(255, 203, 0, 0.7);
     }
+    
+    
+    
+  /* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #111;
+}
+
+/* Love Message Box Styles */
+.message-box {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
+    border: 2px solid #00f0ff; /* Blue border */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Blue glowing effect */
+    width: 80vw; /* Set width to 80% of the viewport width (instead of body) */
+    max-width: 400px; /* Optional: Set a maximum width if necessary */
+    min-width: 200px; /* Optional: Set a minimum width to prevent it from being too narrow */
+    margin: 20px auto; /* Center the box horizontally */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #00f0ff; /* Light blue text */
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace; /* Hacker-like font */
+}
+
+button {
+    background-color: #00f0ff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00bfff;
+}
+    
+    
+    
+    
   </style>
 </head>
 <body>
   
   
-  <div id="clockContainer" style="
-  width: 80%;
-  position: fixed;
-  top: 50px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: 'Courier New', monospace;
-  color: #00ffcc;
-  text-align: center;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 10px;
-  padding: 20px;
-  box-shadow: 0 0 20px rgba(0, 255, 204, 0.5);
-  text-shadow: 0 0 5px #00ffcc, 0 0 10px #00ffcc, 0 0 20px #00ffcc, 0 0 30px #00ff99, 0 0 40px #00ff99;
-  animation: pulse 1s infinite alternate;
-">
-  <div id="currentDate" style="font-size: 1.5rem; margin-bottom: 10px;"></div>
-  <div id="currentTime" style="font-size: 3rem;"></div>
-  <div id="countdown" style="font-size: 1.2rem; margin-top: 10px; color: #ffd700;"></div>
+  <!-- Love Message Box Section -->
+<div class="container">
+    <button id="readButton" onclick="showMessage()">happy new year🎊 <br>click here👈🥳</button>
+    <div class="message-box" id="messageBox">
+        <p id="messageText"></p>
+    </div>
 </div>
+
   
   
   
-  
-  <a href="https://smartkyp.blogspot.com/?m=1#" style="text-decoration: none;">
-  <button style="
-      position: fixed; /* Make it fixed for consistent placement */
-      bottom: 20px; /* Adjust position as per your layout */
-      right: 20px; /* Position on the screen */
-      background-color: #4CAF50; 
-      border: none; 
-      color: white; 
-      padding: 15px 30px; 
-      text-align: center; 
-      font-size: 16px; 
-      border-radius: 5px; 
-      box-shadow: 0px 4px #2e7d32; 
-      cursor: pointer; 
-      transition: transform 0.2s ease-in-out;
-      z-index: 999999999; /* Highest priority */
-  " 
-  onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0px 6px #2e7d32';" 
-  onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0px 4px #2e7d32';">
-    Visit Our Official Website
-  </button>
-</a>
-  
-  
-  
- 
- 
- 
- 
   <!-- Counter Display -->
   <div class="counter" id="balloonCounter">score🏹: 0</div>
 
@@ -227,148 +228,130 @@
 
   <!-- Main Content -->
   <div class="container">
-    <div class="title" id="enterText">Enter Your Name</div>
-    <div class="input-box">
-      <input type="text" id="username" placeholder="Type your name here" />
-      <button onclick="startAnimation()">Start</button>
-    </div>
     <div class="message" id="welcomeMessage">
       <div id="happyNewYear">Happy New Year 2025</div>
       <div id="welcomeText">Welcome to Smart Kyp</div>
-      <div id="userNameText"></div>
       <div class="emoji" id="emojiBox">🎇🥳🎉</div>
     </div>
   </div>
-  
-  
-  
-  
-<script>
-  let poppedBalloons = 0;
-  const balloonColors = ['#ff7eb3', '#ff758c', '#ff575a', '#ffd700', '#ffa500'];
-  const balloonsContainer = document.getElementById('balloonsContainer');
-  const balloonCounter = document.getElementById('balloonCounter');
 
-  // Load score from local storage if available
-  function loadScore() {
-    const storedScore = localStorage.getItem('balloonScore');
-    poppedBalloons = storedScore ? parseInt(storedScore) : 0;
-    balloonCounter.textContent = `Score🏹: ${poppedBalloons}`;
-  }
+  <script>
+    let poppedBalloons = 0;
+    const balloonColors = ['#ff7eb3', '#ff758c', '#ff575a', '#ffd700', '#ffa500'];
+    const balloonsContainer = document.getElementById('balloonsContainer');
+    const balloonCounter = document.getElementById('balloonCounter');
 
-  // Save score to local storage
-  function saveScore() {
-    localStorage.setItem('balloonScore', poppedBalloons);
-  }
-
-  // Create confetti
-  function createConfetti() {
-    for (let i = 0; i < 100; i++) {
-      const confetti = document.createElement('div');
-      confetti.className = 'confetti';
-      confetti.style.left = Math.random() * 100 + 'vw';
-      confetti.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
-      confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
-      confetti.style.animationDelay = Math.random() * 2 + 's';
-      document.body.appendChild(confetti);
-      setTimeout(() => confetti.remove(), 5000);
-    }
-  }
-
-  // Create and animate balloons
-  function createBalloon() {
-    const balloon = document.createElement('div');
-    balloon.className = 'balloon';
-    balloon.style.left = Math.random() * 100 + 'vw';
-    balloon.style.background = `linear-gradient(to bottom, ${
-      balloonColors[Math.floor(Math.random() * balloonColors.length)]
-    }, white)`;
-
-    balloon.addEventListener('click', () => {
-      poppedBalloons++;
+    // Load score from local storage if available
+    function loadScore() {
+      const storedScore = localStorage.getItem('balloonScore');
+      poppedBalloons = storedScore ? parseInt(storedScore) : 0;
       balloonCounter.textContent = `Score🏹: ${poppedBalloons}`;
-      saveScore(); // Save updated score
-      balloon.classList.add('pop');
-      setTimeout(() => balloon.remove(), 500);
-      createConfetti();
-    });
-
-    balloonsContainer.appendChild(balloon);
-    setTimeout(() => balloon.remove(), 7000);
-  }
-
-  setInterval(createBalloon, 500);
-
-  // Start animation after entering name
-  function startAnimation() {
-    const name = document.getElementById('username').value;
-    if (name) {
-      document.getElementById('enterText').style.display = 'none';
-      document.querySelector('.input-box').style.display = 'none';
-      const messageBox = document.getElementById('welcomeMessage');
-      const userNameText = document.getElementById('userNameText');
-      userNameText.innerHTML = `Hi, ${name}`;
-      messageBox.style.display = 'block';
-    } else {
-      alert('Please enter your name.');
     }
-  }
 
-  // Load the score when the page loads
-  document.addEventListener('DOMContentLoaded', loadScore);
-</script>
-  
-  
+    // Save score to local storage
+    function saveScore() {
+      localStorage.setItem('balloonScore', poppedBalloons);
+    }
+
+    // Create confetti
+    function createConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    // Create and animate balloons with images
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      
+      // Randomly select an image from the list
+      const balloonImages = ['1.png', '2.png', '3.png', '4.png'];
+      const randomImage = balloonImages[Math.floor(Math.random() * balloonImages.length)];
+
+      // Create an image element and set the source to the selected image
+      const img = document.createElement('img');
+      img.src = randomImage;
+      img.style.width = '50px';  // Set the image size
+      img.style.height = '70px';  // Adjust the height according to the balloon size
+      img.style.borderRadius = '50%';
+
+      // Append the image to the balloon
+      balloon.appendChild(img);
+
+      balloon.addEventListener('click', () => {
+        poppedBalloons++;
+        balloonCounter.textContent = `Score🏹: ${poppedBalloons}`;
+        saveScore(); // Save updated score
+        balloon.classList.add('pop');
+        setTimeout(() => balloon.remove(), 500);
+        createConfetti();
+      });
+
+      balloonsContainer.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 7000);
+    }
+
+    setInterval(createBalloon, 500);
+
+    // Load the score when the page loads
+    document.addEventListener('DOMContentLoaded', loadScore);
+  </script>
 
 </body>
 
+<script>const message = ` happy new year 🎊 🕛
+हमारा परिवार इस नए वर्ष में आपके लिए कामना करता है कि🥰
+
+नववर्ष 2025 आपके जीवन में नई संभावनाओं और अनगिनत खुशियों के द्वार खोले। यह साल आपके हर सपने को साकार करने का माध्यम बने और आपके जीवन में ढेर सारी खुशियां और तरक्की लेकर आए।
 
 
+इस नए साल में सफलता आपके कदम चूमे, हर चुनौती अवसर में बदले और आपके सभी फैसले आपकी जिंदगी में सकारात्मक बदलाव लाएं। आपकी मेहनत और लगन से हर मंज़िल आसान हो।
 
 
+ 2025 का यह साल आपके लिए नई शुरुआत का प्रतीक बने। यह साल आपके करियर, सेहत, और रिश्तों में नई ऊर्जा का संचार करे। हर दिन उत्साह और नई उपलब्धियों से भरपूर हो।
 
 
+ नया साल आपके लिए खुशहाली, सुख - शांति और समृद्धि लेकर आए। आप अपनी मेहनत और दृढ़ता से उन ऊंचाइयों को छुएं जिनके बारे में आपने कभी सोचा था। यह साल आपके जीवन का सबसे यादगार साल बने।
 
 
-<script>
-  function updateClockAndDate() {
-    const now = new Date();
-    const hours = String(now.getHours()).padStart(2, '0');
-    const minutes = String(now.getMinutes()).padStart(2, '0');
-    const seconds = String(now.getSeconds()).padStart(2, '0');
-    const day = String(now.getDate()).padStart(2, '0');
-    const month = String(now.getMonth() + 1).padStart(2, '0');
-    const year = now.getFullYear();
+आपकी हर सुबह नई उम्मीदों से भरी हो और हर रात संतोष और उपलब्धि का एहसास लेकर आए। नववर्ष 2025 आपके जीवन में ढेर सारी खुशियां, नई सफलता और अपार सुख लेकर आए। आप जहां भी जाएं, वहां आपकी पहचान एक प्रेरणा के रूप में हो
 
-    // Display current date and time
-    document.getElementById('currentDate').textContent = `Date: ${day}/${month}/${year}`;
-    document.getElementById('currentTime').textContent = `${hours} : ${minutes} : ${seconds}`;
-  }
+🥳Heartiest congratulations to your entire family from our family🥰🎊।💌`;
 
-  function updateCountdown() {
-    const now = new Date();
-    const newYear = new Date('January 1, 2025 00:00:00');
-    const diff = newYear - now;
+function showMessage() {
+    // Hide the button after it's clicked
+    document.getElementById('readButton').style.display = 'none';
 
-    if (diff <= 0) {
-      document.getElementById('countdown').textContent = '🎉 Happy New Year 2025! 🎉';
-      clearInterval(countdownInterval);
-      return;
+    // Show the message box
+    document.getElementById('messageBox').style.display = 'block';
+
+    // Start the typing effect
+    typeMessage();
+}
+
+function typeMessage() {
+    let i = 0;
+    let textElement = document.getElementById('messageText');
+    textElement.innerHTML = '';
+    function type() {
+        if (i < message.length) {
+            textElement.innerHTML += message.charAt(i);
+            i++;
+            setTimeout(type, 50); // Adjust typing speed here
+        }
     }
+    type();
+}</script>
 
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
-    document.getElementById('countdown').textContent = 
-      `Countdown to 2025: ${days}d ${hours}h ${minutes}m ${seconds}s`;
-  }
 
-  // Start the clock and countdown
-  updateClockAndDate();
-  updateCountdown();
-  setInterval(updateClockAndDate, 1000);
-  const countdownInterval = setInterval(updateCountdown, 1000);
-</script>
 </html>
