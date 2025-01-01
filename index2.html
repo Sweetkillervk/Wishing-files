@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy New Year 2025</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Arial', sans-serif;
+      overflow: hidden;
+      background: #0a0a23;
+      color: white;
+    }
+    .container {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 1;
+    }
+    .input-box {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 20px;
+    }
+    .input-box input {
+      padding: 15px;
+      font-size: 1.5rem;
+      border: 2px solid #ff575a;
+      border-radius: 5px;
+      width: 80%;
+      max-width: 400px;
+      margin-bottom: 15px;
+      text-align: center;
+      background-color: #1e1e2f;
+      color: #fff;
+      box-shadow: 0 0 8px rgba(255, 87, 90, 0.6);
+    }
+    .input-box input:focus {
+      outline: none;
+      box-shadow: 0 0 15px rgba(255, 87, 90, 0.8);
+    }
+    .input-box button {
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      color: white;
+      background: #ff575a;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background 0.3s ease-in-out;
+    }
+    .input-box button:hover {
+      background: #ff758c;
+    }
+    .message {
+      font-size: 2rem;
+      display: none;
+      margin-top: 20px;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7), 0 0 20px rgba(255, 203, 0, 0.7);
+      line-height: 1.5;
+    }
+    .emoji {
+      font-size: 3rem;
+      margin-top: 20px;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7);
+    }
+    .balloons-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 0;
+    }
+    .balloon {
+      position: absolute;
+      bottom: -100px;
+      width: 50px;
+      height: 70px;
+      background: linear-gradient(to bottom, #ff7eb3, #ff758c);
+      border-radius: 50%;
+      animation: float 7s infinite ease-in;
+      cursor: pointer;
+    }
+    .balloon::before {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: white;
+      transform: translateX(-50%);
+    }
+    @keyframes float {
+      0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+      }
+      80% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(-120vh) scale(1.2);
+        opacity: 0;
+      }
+    }
+    .balloon.pop {
+      animation: pop 0.5s forwards;
+    }
+    @keyframes pop {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(2);
+        opacity: 0;
+      }
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ffcb00;
+      border-radius: 50%;
+      animation: fall 5s linear infinite;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+      }
+    }
+    .counter {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      font-size: 1.5rem;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px 20px;
+      border-radius: 5px;
+      color: #ffcb00;
+      z-index: 100;
+      text-shadow: 0 0 10px rgba(255, 203, 0, 0.7);
+    }
+    
+    
+    
+  /* Body Styles */
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #111;
+}
+
+/* Love Message Box Styles */
+.message-box {
+    display: none;
+    background-color: rgba(0, 0, 0, 0.7); /* Transparent background */
+    border: 2px solid #00f0ff; /* Blue border */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0, 255, 255, 0.8); /* Blue glowing effect */
+    width: 80vw; /* Set width to 80% of the viewport width (instead of body) */
+    max-width: 400px; /* Optional: Set a maximum width if necessary */
+    min-width: 200px; /* Optional: Set a minimum width to prevent it from being too narrow */
+    margin: 20px auto; /* Center the box horizontally */
+    font-size: 16px;
+    line-height: 1.6;
+    color: #00f0ff; /* Light blue text */
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    font-family: 'Courier New', Courier, monospace; /* Hacker-like font */
+}
+
+button {
+    background-color: #00f0ff;
+    color: black;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #00bfff;
+}
+    
+    
+    
+    
+  </style>
+</head>
+<body>
+  
+  
+  <!-- Love Message Box Section -->
+<div class="container">
+    <button id="readButton" onclick="showMessage()">happy new year🎊 <br>click here👈🥳</button>
+    <div class="message-box" id="messageBox">
+        <p id="messageText"></p>
+    </div>
+</div>
+
+  
+  
+  
+  <!-- Counter Display -->
+  <div class="counter" id="balloonCounter">score🏹: 0</div>
+
+  <!-- Animated Balloons -->
+  <div class="balloons-container" id="balloonsContainer"></div>
+
+  <!-- Main Content -->
+  <div class="container">
+    <div class="message" id="welcomeMessage">
+      <div id="happyNewYear">Happy New Year 2025</div>
+      <div id="welcomeText">Welcome to Smart Kyp</div>
+      <div class="emoji" id="emojiBox">🎇🥳🎉</div>
+    </div>
+  </div>
+
+  <script>
+    let poppedBalloons = 0;
+    const balloonColors = ['#ff7eb3', '#ff758c', '#ff575a', '#ffd700', '#ffa500'];
+    const balloonsContainer = document.getElementById('balloonsContainer');
+    const balloonCounter = document.getElementById('balloonCounter');
+
+    // Load score from local storage if available
+    function loadScore() {
+      const storedScore = localStorage.getItem('balloonScore');
+      poppedBalloons = storedScore ? parseInt(storedScore) : 0;
+      balloonCounter.textContent = `Score🏹: ${poppedBalloons}`;
+    }
+
+    // Save score to local storage
+    function saveScore() {
+      localStorage.setItem('balloonScore', poppedBalloons);
+    }
+
+    // Create confetti
+    function createConfetti() {
+      for (let i = 0; i < 100; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.background = balloonColors[Math.floor(Math.random() * balloonColors.length)];
+        confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+        confetti.style.animationDelay = Math.random() * 2 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 5000);
+      }
+    }
+
+    // Create and animate balloons with images
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.style.left = Math.random() * 100 + 'vw';
+      
+      // Randomly select an image from the list
+      const balloonImages = ['1.png', '2.png', '3.png', '4.png'];
+      const randomImage = balloonImages[Math.floor(Math.random() * balloonImages.length)];
+
+      // Create an image element and set the source to the selected image
+      const img = document.createElement('img');
+      img.src = randomImage;
+      img.style.width = '50px';  // Set the image size
+      img.style.height = '70px';  // Adjust the height according to the balloon size
+      img.style.borderRadius = '50%';
+
+      // Append the image to the balloon
+      balloon.appendChild(img);
+
+      balloon.addEventListener('click', () => {
+        poppedBalloons++;
+        balloonCounter.textContent = `Score🏹: ${poppedBalloons}`;
+        saveScore(); // Save updated score
+        balloon.classList.add('pop');
+        setTimeout(() => balloon.remove(), 500);
+        createConfetti();
+      });
+
+      balloonsContainer.appendChild(balloon);
+      setTimeout(() => balloon.remove(), 7000);
+    }
+
+    setInterval(createBalloon, 500);
+
+    // Load the score when the page loads
+    document.addEventListener('DOMContentLoaded', loadScore);
+  </script>
+
+</body>
+
+<script>const message = ` happy new year 🎊 🕛
+हमारा परिवार इस नए वर्ष में आपके लिए कामना करता है कि🥰
+
+नववर्ष 2025 आपके जीवन में नई संभावनाओं और अनगिनत खुशियों के द्वार खोले। यह साल आपके हर सपने को साकार करने का माध्यम बने और आपके जीवन में ढेर सारी खुशियां और तरक्की लेकर आए।
+
+
+इस नए साल में सफलता आपके कदम चूमे, हर चुनौती अवसर में बदले और आपके सभी फैसले आपकी जिंदगी में सकारात्मक बदलाव लाएं। आपकी मेहनत और लगन से हर मंज़िल आसान हो।
+
+
+ 2025 का यह साल आपके लिए नई शुरुआत का प्रतीक बने। यह साल आपके करियर, सेहत, और रिश्तों में नई ऊर्जा का संचार करे। हर दिन उत्साह और नई उपलब्धियों से भरपूर हो।
+
+
+ नया साल आपके लिए खुशहाली, सुख - शांति और समृद्धि लेकर आए। आप अपनी मेहनत और दृढ़ता से उन ऊंचाइयों को छुएं जिनके बारे में आपने कभी सोचा था। यह साल आपके जीवन का सबसे यादगार साल बने।
+
+
+आपकी हर सुबह नई उम्मीदों से भरी हो और हर रात संतोष और उपलब्धि का एहसास लेकर आए। नववर्ष 2025 आपके जीवन में ढेर सारी खुशियां, नई सफलता और अपार सुख लेकर आए। आप जहां भी जाएं, वहां आपकी पहचान एक प्रेरणा के रूप में हो
+
+🥳Heartiest congratulations to your entire family from our family🥰🎊।💌`;
+
+function showMessage() {
+    // Hide the button after it's clicked
+    document.getElementById('readButton').style.display = 'none';
+
+    // Show the message box
+    document.getElementById('messageBox').style.display = 'block';
+
+    // Start the typing effect
+    typeMessage();
+}
+
+function typeMessage() {
+    let i = 0;
+    let textElement = document.getElementById('messageText');
+    textElement.innerHTML = '';
+    function type() {
+        if (i < message.length) {
+            textElement.innerHTML += message.charAt(i);
+            i++;
+            setTimeout(type, 50); // Adjust typing speed here
+        }
+    }
+    type();
+}</script>
+
+
+
+</html>
